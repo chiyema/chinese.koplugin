@@ -18,7 +18,7 @@
 -- Requirements:
 --   • 	A compatible Chinese dictionary (CEDICT recommended). 
 --		Set the path to the stardict files on line 210 (including file name, without file extension).
--- 	  	looks like: local dict_base = "/mnt/onboard/.adds/koreader/plugins/chinese.koplugin/cedict"
+-- 	  	looks like: local dict_base = DataStorage:getDataDir() .. "/data/dict/cedict"
 --		You can also just use the path to an existing Stardict dictionary (koreader/data/dict).
 --
 -- Copyright (C) 2025
@@ -207,7 +207,8 @@ function Chinese:_try_load_lexicon()
     self.lex_ready = false
     self.words, self.wordset = nil, nil
 
-    local dict_base = "/mnt/onboard/.adds/koreader/plugins/chinese.koplugin/cedict"
+    local DataStorage = require("datastorage")
+    local dict_base = DataStorage:getDataDir() .. "/data/dict/cedict"
     local ifo = dict_base .. ".ifo"
     local idx = dict_base .. ".idx"
 
